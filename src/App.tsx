@@ -1,24 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from './components/assets/button';
+import Input from './components/assets/Input';
+
 
 function App() {
-  return (
+  
+  const [a, setA]= useState(0);
+  const [b, setB]= useState(0);
+  return ( 
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button a={a} b={b} text="Add" handleClick={(event, a,b)=> alert(a+"+"+b+"="+(a+b))}/>;
+      <Button a={a} b={b} text="Subtract" handleClick={(event, a,b)=> alert(a+"-"+b+"="+(a-b))}/>;
+      <Button a={a} b={b} text="Multiply" handleClick={(event, a,b)=> alert(a+"*"+b+"="+(a*b))}/>;
+      <Button a={a} b={b} text="Divide" handleClick={(event, a,b)=> alert(a+"/"+b+"="+(a/b))}/>;
+      <Input text={a} handleChange={(event)=>{setA(Number(event.currentTarget.value))}}/>
+      <Input text={b} handleChange={(event)=>{setB(Number(event.currentTarget.value))}}/>
     </div>
   );
 }
